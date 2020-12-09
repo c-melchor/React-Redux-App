@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getDogData } from "../actions";
 import Image from "./Image";
+import "../styles/form.css";
 
 function DogCard(props) {
   console.log(props, "PROPS");
@@ -27,19 +28,27 @@ function DogCard(props) {
     console.log(input, "INPUT");
     props.getDogData(input);
   };
-  const handleClick = () => {
-    props.getDogData();
-  };
+  // const handleClick = () => {
+  //   props.getDogData();
+  // };
 
   return (
     <div>
-      <form onSubmit={onSubmit}>
-        <label htmlFor="search">
-          Search:
-          <input onChange={onChange} id="search" type="text" />
-          <button>Click to search</button>
-        </label>
-      </form>
+      <div className="form">
+        <form onSubmit={onSubmit}>
+          <label htmlFor="search">
+            Search:
+            <input
+              placeholder="enter breed"
+              className="input"
+              onChange={onChange}
+              id="search"
+              type="text"
+            />
+            <button className="button">Click to search</button>
+          </label>
+        </form>
+      </div>
 
       <h2>Search a breed to begin! 🐕 </h2>
       <Image item={props.dogs} />

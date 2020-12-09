@@ -1,0 +1,15 @@
+.form {
+  color: white;
+  text-shadow: 1px 1 px black;
+  font-size: 1.2rem;
+}
+
+.button {
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+}
+
+.input {
+  background-color: white;
+}

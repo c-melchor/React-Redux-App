@@ -1,7 +1,36 @@
+* {
+  background-color: #db7093;
+}
+
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.App h1 {
+  text-shadow: 1.5px 1.5px black;
+}
+
+.dogdiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+img {
+  background-color: #fff3e0;
+  border: 5px double black;
+  object-fit: contain;
+  height: 300px;
+  width: 300px;
+  margin-top: 1%;
+  margin-bottom: 1%;
 }
