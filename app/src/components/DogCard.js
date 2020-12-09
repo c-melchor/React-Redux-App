@@ -1,35 +1,42 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getDogData } from "../actions";
 import Image from "./Image";
 
 function DogCard(props) {
-  const renderDogImgs = props => {
-    console.log("dog func  props", props.dogs.length);
-    const dogArr = props.dogs;
-    if (dogArr.length < 1) {
-      return (
-        <h3>
-          {"No dog data to display "} {<span>😞</span>}{" "}
-        </h3>
-      );
-    } else {
-      return dogArr.map(item => {
-        <Image item={item} />;
-      });
-    }
+  console.log("PROPS HERE", props);
+  useEffect(() => {
+    getDogData();
+  }, []);
+
+  if (props.error) {
+    return <h3>Sorry, there is a bug 🐛 {props.error} </h3>;
+  }
+  if (props.isFetching) {
+    return <h3>Patience is a virtue...</h3>;
+  }
+
+  const handleClick = () => {
+    props.getDogData();
   };
+
   return (
     <div>
       <h2>Click to show dogs!</h2>
-      {renderDogImgs(props)}
-      <button>Click to fetch dog data!</button>
+      <Image item={props.dogs} />
+      <button onClick={handleClick}>Click to fetch dog data!</button>
     </div>
   );
 }
 
 const mapStateToProps = state => {
-  return { ...state, dogs: [...state.dogs], isFetching: false, error: "" };
+  console.log("STATE", state);
+  return {
+    // ...state,
+    dogs: [...state.dogs],
+    isFetching: state.isFetching,
+    error: state.error
+  };
 };
 
 export default connect(mapStateToProps, { getDogData })(DogCard);

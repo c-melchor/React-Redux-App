@@ -10,10 +10,10 @@ export const getDogData = () => dispatch => {
     .get("https://dog.ceo/api/breed/hound/images")
     .then(res => {
       console.log("DOG RESULTS HERE", res);
-      // dispatch({type:DOG_DATA_SUCCESS, payload:res.data.message});
+      dispatch({ type: DOG_DATA_SUCCESS, payload: res.data.message });
     })
     .catch(err => {
       console.log(err);
-      //   dispatch({ type: DOG_DATA_FAIL, payload: err.response.message });
+      dispatch({ type: DOG_DATA_FAIL, payload: err.response.message });
     });
 };
