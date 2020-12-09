@@ -23,7 +23,6 @@ export const reducer = (state = initialState, action) => {
     case DOG_DATA_FAIL:
       return {
         ...state,
-        isFetching: false,
         error: action.payload
       };
     default:

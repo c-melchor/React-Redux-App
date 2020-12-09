@@ -12,13 +12,6 @@ function DogCard(props) {
     getDogData();
   }, []);
 
-  if (props.error) {
-    return <h3>Sorry, we couldn't find that dog 😒 </h3>;
-  }
-  if (props.isFetching) {
-    return <h3>Patience is a virtue...</h3>;
-  }
-
   const onChange = e => {
     setInput(e.target.value);
   };
@@ -28,9 +21,33 @@ function DogCard(props) {
     console.log(input, "INPUT");
     props.getDogData(input);
   };
-  // const handleClick = () => {
-  //   props.getDogData();
-  // };
+  if (props.error) {
+    return (
+      <div>
+        <h3>Sorry, we couldn't find that dog 😒 </h3>
+        <h3>Please try again</h3>
+        <div className="form">
+          <form onSubmit={onSubmit}>
+            <label htmlFor="search">
+              Search:
+              <input
+                placeholder="enter breed"
+                className="input"
+                onChange={onChange}
+                id="search"
+                type="text"
+              />
+              <button className="button">Click to search</button>
+            </label>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
+  if (props.isFetching) {
+    return <h3>Patience is a virtue...</h3>;
+  }
 
   return (
     <div>

@@ -13,7 +13,7 @@ export const getDogData = searchTerms => dispatch => {
     })
     .catch(err => {
       console.log(err, "ERROR HERE");
-      dispatch({ type: DOG_DATA_FAIL, payload: err.response.message });
+      dispatch({ type: DOG_DATA_FAIL, payload: err });
     });
 };
 
