@@ -1,7 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
+import { getDogData } from "../actions";
 
 function DogCard(props) {
+  console.log("PROPS HERE", props);
   return (
     <div>
       <p>Hello from DogCard</p>
@@ -10,8 +12,7 @@ function DogCard(props) {
 }
 
 const mapStateToProps = state => {
-  console.log(state, "DOG CARD STATE");
-  return { ...state, name: state.name, breed: state.breed, isFetching: false };
+  return { ...state, dogs: [state.dogs], isFetching: false, error: "" };
 };
 
-export default connect(mapStateToProps)(DogCard);
+export default connect(mapStateToProps, { getDogData })(DogCard);
