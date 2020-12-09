@@ -1,7 +1,6 @@
 const initialState = {
   name: "",
   breed: "",
-  image: "",
   isFetching: false,
   error: ""
 };
